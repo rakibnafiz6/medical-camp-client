@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 
 const Register = () => {
-    const {createUser} = useAuth();
+    const {createUser, updateUserProfile} = useAuth();
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
@@ -11,6 +11,16 @@ const Register = () => {
         createUser(data.email, data.password)
         .then(result =>{
             console.log(result);
+
+        const profile ={
+            displayName: data.name,
+            photoURL: data.photo
+        }
+        updateUserProfile(profile)
+        .then(()=>{
+            console.log('update profile successfully');
+        })
+        
         })
         .catch(error=>{
             console.log(error.message);
