@@ -1,5 +1,22 @@
+import { useForm } from "react-hook-form";
+import useAuth from "../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 const Register = () => {
+    const {createUser} = useAuth();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const onSubmit = (data) => {
+        console.log("Form Data:", data);
+        createUser(data.email, data.password)
+        .then(result =>{
+            console.log(result);
+        })
+        .catch(error=>{
+            console.log(error.message);
+        })
+    };
+
     return (
         <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -11,36 +28,59 @@ const Register = () => {
                     </p>
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <form className="card-body">
+                    <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Photo-Url</span>
                             </label>
-                            <input type="url" name="photo" placeholder="photo-url" className="input input-bordered" required />
+                            <input
+                                {...register('photo', { required: "Photo is required" })}
+                                type="url" placeholder="photo-url" className="input input-bordered" />
+                            {errors.photo && <p className="text-red-500 text-sm">{errors.photo.message}</p>}
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Name</span>
                             </label>
-                            <input type="email" name="name" placeholder="text" className="input input-bordered" required />
+                            <input
+                                {...register('name', { required: "Name is required" })}
+                                type="text" placeholder="name" className="input input-bordered" />
+                            {errors.name && <p className="text-red-500 text-sm">{errors.name.message}</p>}
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                            <input
+                                {...register('email', { required: "Email is required" })}
+                                type="email" placeholder="email" className="input input-bordered" />
+                            {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" name="password" placeholder="password" className="input input-bordered" required />
-                           
+                            <input
+                                {...register('password', {
+                                    required: "Password is required", pattern: {
+                                        value: /^(?=.*[a-z])(?=.*[A-Z]).+$/,
+                                        message:
+                                            "Password must contain at least one uppercase and one lowercase letter",
+                                    }, minLength: {
+                                        value: 6,
+                                        message: "Password must be at least 6 characters long",
+                                    },
+                                })}
+                                type="password" placeholder="password" className="input input-bordered" />
+                            {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Register</button>
+                            <button
+                                type="submit"
+                                className="btn btn-primary">Register</button>
                         </div>
                     </form>
+                    <p className="text-center py-3">Already Have an account Please!<Link to='/login' className="text-red-600">Login</Link></p>
                 </div>
             </div>
         </div>

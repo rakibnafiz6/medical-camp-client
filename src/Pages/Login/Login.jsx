@@ -1,6 +1,21 @@
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import { useForm } from "react-hook-form";
 
 const Login = () => {
+    const {signInUser} = useAuth();
+    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const onSubmit = (data) => {
+        console.log("Form Data:", data);
+        signInUser(data.email, data.password)
+        .then(result =>{
+            console.log(result);
+        })
+        .catch(error=>{
+            console.log(error.message);
+        })
+    };
     return (
         <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content flex-col lg:flex-row-reverse">
@@ -12,21 +27,30 @@ const Login = () => {
                     </p>
                 </div>
                 <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-                    <form className="card-body">
+                    <form onSubmit={handleSubmit(onSubmit)}
+                    className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" placeholder="email" className="input input-bordered" required />
+                            <input
+                            {...register('email', { required: "Email is required" })}
+                             type="email" placeholder="email" className="input input-bordered" />
+                            {errors.email && <p className="text-red-500 text-sm">{errors.email.message}</p>}
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input type="password" placeholder="password" className="input input-bordered" required />
+                            <input
+                            {...register('password', { required: "Password is required" })}
+                             type="password" placeholder="password" className="input input-bordered" />
+                             {errors.password && <p className="text-red-500 text-sm">{errors.password.message}</p>}
                         </div>
                         <div className="form-control mt-6">
-                            <button className="btn btn-primary">Login</button>
+                            <button
+                            type="submit"
+                             className="btn btn-primary">Login</button>
                         </div>
                     </form>
                     <p className="text-center py-3">New Here Please <Link to='/register' className="text-red-600">Register</Link></p>

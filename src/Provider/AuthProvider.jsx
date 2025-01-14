@@ -1,4 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import auth from "../firebase.init";
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 
 
 export const AuthContext = createContext(null);
@@ -51,6 +53,11 @@ const AuthProvider = ({ children }) => {
     const authInfo = {
         user,
         loading,
+        createUser,
+        signInUser,
+        signInGoogle,
+        signOutUser,
+        updateUserProfile
     }
 
     return (
