@@ -1,10 +1,23 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const NavBar = () => {
     const links = <>
     <NavLink to='/' className='mr-2'><li>Home</li></NavLink>
     <NavLink><li>Available Camps</li></NavLink>
     </>
+    const {signOutUser}= useAuth();
+
+    const handleLogOut = ()=>{
+        signOutUser()
+        .then(()=>{
+            console.log('sign out successfully');
+        })
+        .catch(error=>{
+            console.log(error.message);
+        })
+    }
+
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
@@ -38,6 +51,7 @@ const NavBar = () => {
             </div>
             <div className="navbar-end">
                 <Link to='/login'><button className="btn">Join Us</button></Link>
+                <button onClick={handleLogOut} className="btn">Logout</button>
             </div>
         </div>
     );
