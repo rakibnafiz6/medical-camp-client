@@ -3,23 +3,23 @@ import useAuth from "../../hooks/useAuth";
 
 const NavBar = () => {
     const links = <>
-    <NavLink to='/' className='mr-2'><li>Home</li></NavLink>
-    <NavLink><li>Available Camps</li></NavLink>
+        <NavLink to='/' className='mr-2'><li>Home</li></NavLink>
+        <NavLink><li>Available Camps</li></NavLink>
     </>
-    const {signOutUser}= useAuth();
+    const { signOutUser, user } = useAuth();
 
-    const handleLogOut = ()=>{
+    const handleLogOut = () => {
         signOutUser()
-        .then(()=>{
-            console.log('sign out successfully');
-        })
-        .catch(error=>{
-            console.log(error.message);
-        })
+            .then(() => {
+                console.log('sign out successfully');
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-base-100 px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -49,12 +49,25 @@ const NavBar = () => {
                     {links}
                 </ul>
             </div>
-            <div className="navbar-end">
-                <Link to='/login'><button className="btn">Join Us</button></Link>
-                <button onClick={handleLogOut} className="btn">Logout</button>
+            <div className="navbar-end mr-6">
+                {user ? <details className="dropdown">
+                    
+                    <summary className="btn">
+                    <img className="w-10 h-10 rounded-full" src={user?.photoURL} alt="" />
+                    </summary>
+                    <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-32 p-2 shadow">
+                        <li className="mb-1 ml-2 text-base">{user?.displayName}</li>
+                        <Link to='/dashboard'><li className="mb-1"><button className="btn-xs flex text-base">Dashboard</button></li></Link>
+                        <li><button onClick={handleLogOut} className="btn-xs flex text-base">Logout</button></li>
+                    </ul>
+                </details>
+                    : <Link to='/login'><button className="btn">Join Us</button></Link>
+                }
+                
+                
+
             </div>
         </div>
     );
 };
-
 export default NavBar;
