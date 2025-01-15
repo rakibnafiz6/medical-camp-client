@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const { signInUser } = useAuth();
@@ -12,9 +13,21 @@ const Login = () => {
         signInUser(data.email, data.password)
             .then(result => {
                 console.log(result);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User Login successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             })
             .catch(error => {
                 console.log(error.message);
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: error.message,
+                  });
             })
     };
     return (
@@ -54,7 +67,7 @@ const Login = () => {
                                 className="btn btn-primary">Login</button>
                         </div>
                     </form>
-                   <SocialLogin></SocialLogin>
+                    <SocialLogin></SocialLogin>
                     <p className="text-center py-3">New Here Please <Link to='/register' className="text-red-600">Register</Link></p>
                 </div>
             </div>

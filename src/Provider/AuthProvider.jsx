@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import auth from "../firebase.init";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 
 export const AuthContext = createContext(null);
@@ -41,17 +42,25 @@ const AuthProvider = ({ children }) => {
             console.log('state change', currentUser);
             setUser(currentUser);
             setLoading(false);
-            if(currentUser?.email){
-                axios.post(`${import.meta.env.VITE_API_URL}/users/${currentUser?.email}`,{
+            if (currentUser?.email) {
+                axios.post(`${import.meta.env.VITE_API_URL}/users/${currentUser?.email}`, {
                     name: currentUser?.displayName,
                     email: currentUser?.email,
-                    role: 'participant'
                 })
-                .then(res=>{
-                    console.log(res.data);
-                })
+                    .then(res => {
+                        console.log(res.data);
+                        if (res.data.insertedId) {
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "Users data stored in db",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        }
+                    })
             }
-           
+
         })
         return () => {
             unsubscribe();
