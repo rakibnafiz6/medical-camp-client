@@ -6,6 +6,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
 import DashBoard from "../Layout/DashBoard/DashBoard";
+import AddCamp from "../Layout/DashBoard/AddCamp/AddCamp";
 
 
 
@@ -34,8 +35,8 @@ const router = createBrowserRouter([
         element: <DashBoard></DashBoard>,
         children: [
            {
-            path: '/dashboard',
-            element: <h1>outlet</h1>
+            path: '/dashboard/add-camp',
+            element: <AddCamp></AddCamp>
            },
            {
             path: '/dashboard/profile',

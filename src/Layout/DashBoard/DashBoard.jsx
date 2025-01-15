@@ -6,7 +6,7 @@ const DashBoard = () => {
         <div className="bg-red-600 flex flex-col p-8 min-h-screen">
             {/* organizer */}
             <Link to='/dashboard/profile'>Organizer Profile</Link>
-            <Link>Add A Camp</Link>
+            <Link to='/dashboard/add-camp'>Add A Camp</Link>
             <Link>Manage Camps</Link>
             <Link>Manage Registered Camps</Link>
             
@@ -18,7 +18,7 @@ const DashBoard = () => {
             <Link to='/'>Home</Link>
 
         </div>
-        <div className="bg-green-600 w-full pt-8">
+        <div className="w-full pt-7">
             <Outlet></Outlet>
         </div>
         </div>

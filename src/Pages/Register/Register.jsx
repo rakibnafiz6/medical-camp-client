@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Register = () => {
     const {createUser, updateUserProfile} = useAuth();
@@ -90,6 +91,7 @@ const Register = () => {
                                 className="btn btn-primary">Register</button>
                         </div>
                     </form>
+                    <SocialLogin></SocialLogin>
                     <p className="text-center py-3">Already Have an account Please!<Link to='/login' className="text-red-600">Login</Link></p>
                 </div>
             </div>
