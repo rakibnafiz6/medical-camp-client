@@ -7,6 +7,7 @@ import { GiMoneyStack } from 'react-icons/gi';
 import { MdSupervisorAccount } from 'react-icons/md';
 import { SiNamebase } from 'react-icons/si';
 import { TbLayout2Filled } from 'react-icons/tb';
+import { Link } from 'react-router-dom';
 
 const AvailableCamp = () => {
     const [search, setSearch] = useState('');
@@ -78,7 +79,9 @@ const AvailableCamp = () => {
                                 <p className='flex items-center gap-1'><SiNamebase />{camp.professionalName}</p>
                                 <p className=''>{`${camp.description}`.slice(0, 40)}...</p>
                                 <div className="card-actions">
+                                    <Link to={`/camp-details/${camp._id}`}>
                                     <button className="btn btn-primary">Details</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
