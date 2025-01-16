@@ -2,9 +2,9 @@ import axios from 'axios';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
 
-const JoinCamp = ({ camps }) => {
+const JoinCamp = ({ camps, id }) => {
     const { user } = useAuth();
-
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -22,7 +22,7 @@ const JoinCamp = ({ camps }) => {
 
 
         const JoinCamp = {
-            campName, campFees, location, professionalName, participantName, participantEmail, age, phoneNumber, gender, contact
+            campName, campFees, location, professionalName, participantName, participantEmail, age, phoneNumber, gender, contact, id
         }
         
         axios.post(`${import.meta.env.VITE_API_URL}/joins`, JoinCamp)

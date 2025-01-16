@@ -42,7 +42,7 @@ const CampDetails = () => {
                             {/* {camps.description} */}
                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas alias modi quae cumque. Amet eligendi error, perferendis, explicabo cum aliquid veniam, illo et expedita deserunt nobis fuga incidunt tempore delectus doloremque voluptate numquam nulla laborum! Molestiae enim voluptatem placeat eos repudiandae! Architecto consectetur quis odit? Eos non voluptate rerum earum?
                         </p>
-                        <JoinCamp camps={camps}></JoinCamp>
+                        <JoinCamp camps={camps} id={id}></JoinCamp>
                     </div>
                 </div>
             </div>

@@ -11,7 +11,9 @@ const MainLayout = () => {
             <section className="w-11/12 mx-auto">
             <Outlet></Outlet>
             </section>
+            <section className="mt-10">
             <Footer></Footer>
+            </section>
         </div>
     );
 };

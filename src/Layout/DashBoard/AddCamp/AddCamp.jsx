@@ -17,8 +17,11 @@ const AddCamp = () => {
     };
 
     const onSubmit = (data) => {
+        // console.log(data.participantCount);
+        const participant = parseInt(data.participantCount)
+        // console.log(participant);
         const formattedDateTime = formatDateTimeWithDateFns(data.dateTime);
-        const updatedData = { ...data, dateTime: formattedDateTime };
+        const updatedData = { ...data, dateTime: formattedDateTime, participantCount: participant };
 
         axiosSecure.post('/camps', updatedData)
             .then(res => {
