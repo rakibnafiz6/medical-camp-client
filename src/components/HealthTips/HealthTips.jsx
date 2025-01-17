@@ -1,7 +1,7 @@
 
 const HealthTips = () => {
     return (
-        <div className="pl-7">
+        <div className="pl-7 space-y-3">
             <h2 className="font-bold text-2xl text-center">Health Tips Section</h2>
             <h4 className="font-bold text-xl">Purpose:</h4>
             Provide participants and organizers with useful health tips to improve their well-being and raise awareness about common health issues.

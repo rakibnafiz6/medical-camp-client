@@ -24,7 +24,7 @@ const DashBoard = () => {
              
             {user?.email === "nafizrakib55@gmail.com"?<>
             {/* organizer */}
-            <Link to='/dashboard/profile'>Organizer Profile</Link>
+            <Link to='/dashboard/organizer-profile'>Organizer Profile</Link>
             <Link to='/dashboard/add-camp'>Add A Camp</Link>
             <Link>Manage Camps</Link>
             <Link className="">Manage Registered Camps</Link>

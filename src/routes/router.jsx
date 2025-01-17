@@ -9,6 +9,8 @@ import DashBoard from "../Layout/DashBoard/DashBoard";
 import AddCamp from "../Layout/DashBoard/AddCamp/AddCamp";
 import AvailableCamp from "../Pages/AvailableCamp/AvailableCamp";
 import CampDetails from "../Pages/CampDetails/CampDetails";
+import OrganizerProfile from "../Layout/DashBoard/OrganizerProfile/OrganizerProfile";
+import UpdateOrganizerProfile from "../Layout/DashBoard/UpdateOrganizerProfile/UpdateOrganizerProfile";
 
 
 
@@ -49,8 +51,12 @@ const router = createBrowserRouter([
             element: <AddCamp></AddCamp>
            },
            {
-            path: '/dashboard/profile',
-            element: <h1>profile</h1>
+            path: '/dashboard/organizer-profile',
+            element: <OrganizerProfile></OrganizerProfile>
+           },
+           {
+            path: '/dashboard/organizer-update',
+            element: <UpdateOrganizerProfile></UpdateOrganizerProfile>
            }
         ]
     }
