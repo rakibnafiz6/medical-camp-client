@@ -19,14 +19,14 @@ const DashBoard = () => {
 
 
     return (
-        <div className="flex w-11/12 mx-auto">
+        <div className="flex gap-4 w-11/12 mx-auto">
         <div className="bg-red-600 flex flex-col p-8 w-60 min-h-screen">
              
             {user?.email === "nafizrakib55@gmail.com"?<>
             {/* organizer */}
             <Link to='/dashboard/organizer-profile'>Organizer Profile</Link>
             <Link to='/dashboard/add-camp'>Add A Camp</Link>
-            <Link>Manage Camps</Link>
+            <Link to='/dashboard/manage-camps'>Manage Camps</Link>
             <Link className="">Manage Registered Camps</Link>
             <Link to='/'>Home</Link>
             </>

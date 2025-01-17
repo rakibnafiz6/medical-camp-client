@@ -11,6 +11,7 @@ import AvailableCamp from "../Pages/AvailableCamp/AvailableCamp";
 import CampDetails from "../Pages/CampDetails/CampDetails";
 import OrganizerProfile from "../Layout/DashBoard/OrganizerProfile/OrganizerProfile";
 import UpdateOrganizerProfile from "../Layout/DashBoard/UpdateOrganizerProfile/UpdateOrganizerProfile";
+import ManageCamps from "../Layout/DashBoard/ManageCamps/ManageCamps";
 
 
 
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
            {
             path: '/dashboard/organizer-update',
             element: <UpdateOrganizerProfile></UpdateOrganizerProfile>
+           },
+           {
+            path: '/dashboard/manage-camps',
+            element: <ManageCamps></ManageCamps>
            }
         ]
     }
