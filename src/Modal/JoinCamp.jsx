@@ -18,11 +18,13 @@ const JoinCamp = ({ camps, id }) => {
         const phoneNumber = form.phoneNumber.value;
         const gender = form.gender.value;
         const contact = form.contact.value;
+        const paymentStatus = "unpaid";
+        const confirmationStatus = "Pending";
 
 
 
         const JoinCamp = {
-            campName, campFees, location, professionalName, participantName, participantEmail, age, phoneNumber, gender, contact, id
+            campName, campFees, location, professionalName, participantName, participantEmail, age, phoneNumber, gender, contact, id, paymentStatus, confirmationStatus
         }
         
         axios.post(`${import.meta.env.VITE_API_URL}/joins`, JoinCamp)
