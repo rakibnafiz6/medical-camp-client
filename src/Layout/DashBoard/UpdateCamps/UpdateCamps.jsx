@@ -57,7 +57,7 @@ const UpdateCamps = () => {
 
         axios.put(`${import.meta.env.VITE_API_URL}/camps-update/${id}`, updatedCamp)
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 if (res.data.modifiedCount) {
                     Swal.fire({
                         position: "top-end",
