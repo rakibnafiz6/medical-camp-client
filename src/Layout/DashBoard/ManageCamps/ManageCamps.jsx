@@ -38,7 +38,7 @@ const ManageCamps = () => {
                             <td>{camp.location}</td>
                             <td>{camp.professionalName}</td>
                             <td className="flex flex-col md:flex-row">
-                                <Link><button className="btn mr-1">Update</button></Link>
+                                <Link to={`/dashboard/update-camps/${camp._id}`}><button className="btn mr-1">Update</button></Link>
                                 <button className="btn">Delete</button>
                             </td>
                         </tr>)
