@@ -27,7 +27,7 @@ const DashBoard = () => {
             <Link to='/dashboard/organizer-profile'>Organizer Profile</Link>
             <Link to='/dashboard/add-camp'>Add A Camp</Link>
             <Link to='/dashboard/manage-camps'>Manage Camps</Link>
-            <Link className="">Manage Registered Camps</Link>
+            <Link to='/dashboard/manage-register' className="">Manage Registered Camps</Link>
             <Link to='/'>Home</Link>
             </>
              :<>

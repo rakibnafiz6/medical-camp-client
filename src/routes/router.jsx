@@ -16,6 +16,7 @@ import UpdateCamps from "../Layout/DashBoard/UpdateCamps/UpdateCamps";
 import RegisterCamps from "../Layout/DashBoard/RegisterCamps/RegisterCamps";
 import Payment from "../Layout/DashBoard/Payment/Payment";
 import PaymentHistory from "../Layout/DashBoard/PaymentHistory/PaymentHistory";
+import ManageRegisterCamp from "../Layout/DashBoard/ManageRegisterCamp/ManageRegisterCamp";
 
 
 
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
             element: <ManageCamps></ManageCamps>
            },
            {
+            path: '/dashboard/manage-register',
+            element: <ManageRegisterCamp></ManageRegisterCamp>
+           },
+           {
             path: '/dashboard/update-camps/:id',
             element: <UpdateCamps></UpdateCamps>
            },
@@ -82,7 +87,8 @@ const router = createBrowserRouter([
            {
             path: '/dashboard/payment-history',
             element: <PaymentHistory></PaymentHistory>
-           }
+           },
+
         ]
     }
 ]);
