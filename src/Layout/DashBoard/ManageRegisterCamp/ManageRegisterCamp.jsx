@@ -29,6 +29,32 @@ const ManageRegisterCamp = () => {
      } })
     }
 
+    const handleDelete = (id)=>{
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Are you sure you want to cancel this registration?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, cancel it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+            axios.delete(`${import.meta.env.VITE_API_URL}/delete-register/${id}`)
+            .then(res=>{
+                // console.log(res.data);
+               if(res.data.deletedCount){
+                refetch();
+                Swal.fire({
+                    title: "Canceled!",
+                    text: "Your register has been canceled.",
+                    icon: "success"
+                  });
+               }
+            })
+            }
+          });
+    }
 
     return (
         <div>
@@ -58,7 +84,9 @@ const ManageRegisterCamp = () => {
                             {camp.confirmationStatus}
                             </button>: camp.confirmationStatus}</td>
                             <td>
-                                <button className="btn">Cancel</button>
+                               {camp.confirmationStatus === 'Confirmed' && camp.paymentStatus === 'paid'? <button disabled className="btn">Cancel</button>: <button
+                               onClick={()=>handleDelete(camp._id)}
+                               className="btn">Cancel</button>}
                             </td>
                         </tr>)}
                        
