@@ -13,8 +13,6 @@ const Payment = () => {
     const fees = queryParams.get("fees");
     const id = queryParams.get("id");
 
-    console.log("Payment Component Fees:", fees);
-    console.log("Payment Component ID:", id);
 
    
     return (

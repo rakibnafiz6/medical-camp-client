@@ -17,6 +17,7 @@ import RegisterCamps from "../Layout/DashBoard/RegisterCamps/RegisterCamps";
 import Payment from "../Layout/DashBoard/Payment/Payment";
 import PaymentHistory from "../Layout/DashBoard/PaymentHistory/PaymentHistory";
 import ManageRegisterCamp from "../Layout/DashBoard/ManageRegisterCamp/ManageRegisterCamp";
+import Feedback from "../Layout/DashBoard/Feedback/Feedback";
 
 
 
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
             path: '/dashboard/payment-history',
             element: <PaymentHistory></PaymentHistory>
            },
+           {
+            path: '/dashboard/feedback',
+            element: <Feedback></Feedback>
+           }
 
         ]
     }

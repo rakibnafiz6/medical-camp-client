@@ -82,7 +82,7 @@ const RegisterCamps = () => {
                                             </button>
                                         )}
                                         {
-                                            camp.paymentStatus === 'paid' && camp.confirmationStatus === 'confirmed' && <button className="btn ml-1">Feedback</button>
+                                            camp.paymentStatus === 'paid' && camp.confirmationStatus === 'Confirmed' && <Link to={`/dashboard/feedback?campName=${camp.campName}&name=${camp.participantName}`}><button className="btn ml-1">Feedback</button></Link>
                                         }
                                     </td>
                                 </tr>
