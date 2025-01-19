@@ -1,12 +1,27 @@
 import React from 'react';
 import useAuth from '../../hooks/useAuth';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const SocialLogin = () => {
     const {signInGoogle} = useAuth();
+    const navigate = useNavigate();
+
     const handleGoogle = ()=>{
         signInGoogle()
         .then(result=>{
-            console.log(result);
+
+            const userInfo ={
+                name: result?.user?.displayName,
+                email: result?.user?.email,
+                image: result?.user?.photoURL
+            }
+
+            axios.post(`${import.meta.env.VITE_API_URL}/users`, userInfo)
+                .then(res => {
+                    console.log(res.data);
+                  navigate('/');
+                })
         })
         .catch(error=>{
             console.log(error.message);

@@ -10,7 +10,7 @@ const Login = () => {
     const location = useLocation();
     const from = location.state || '/';
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const onSubmit = (data) => {
         console.log("Form Data:", data);
@@ -24,6 +24,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                reset();
                 navigate(from);
             })
             .catch(error => {

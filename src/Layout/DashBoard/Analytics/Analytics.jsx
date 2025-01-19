@@ -48,7 +48,7 @@ const Analytics = () => {
         <XAxis dataKey="campName" />
         <YAxis />
         <Bar dataKey="campFees" fill="#8884d8" shape={<TriangleBar />} label={{ position: 'top' }}>
-          {registered.map((entry, index) => (
+          {registered?.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={colors[index % 6]} />
           ))}
         </Bar>

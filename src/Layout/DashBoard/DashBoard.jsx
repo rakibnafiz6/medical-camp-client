@@ -33,7 +33,7 @@ const DashBoard = () => {
              :<>
             {/* Participant */}
             <Link to='/dashboard/analytics'>Analytics</Link>
-            <Link>Participant Profile</Link>
+            <Link to='/dashboard/participant-profile'>Participant Profile</Link>
             <Link to='/dashboard/register'>Registered Camps</Link>
             <Link to='/dashboard/payment-history'>Payment History</Link>
             <Link to='/'>Home</Link>

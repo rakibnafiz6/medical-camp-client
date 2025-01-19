@@ -2,13 +2,15 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageCamps = () => {
+    const axiosSecure = useAxiosSecure();
 
     const { data: camps = [], refetch } = useQuery({
         queryKey: ['manage-camps'],
         queryFn: async () => {
-            const res = await axios.get(`${import.meta.env.VITE_API_URL}/manage-camps`)
+            const res = await axiosSecure.get(`${import.meta.env.VITE_API_URL}/manage-camps`)
 
             return res.data;
         }

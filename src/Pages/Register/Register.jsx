@@ -1,34 +1,52 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Register = () => {
-    const { createUser, updateUserProfile } = useAuth();
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { createUser, updateUserProfile, user } = useAuth();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        console.log("Form Data:", data);
+       
         createUser(data.email, data.password)
             .then(result => {
                 console.log(result);
-                Swal.fire({
-                    position: "top-end",
-                    icon: "success",
-                    title: "User Created successfully",
-                    showConfirmButton: false,
-                    timer: 1500
-                });
-
+               
                 const profile = {
                     displayName: data.name,
-                    photoURL: data.photo
+                    photoURL: data.photo,
                 }
                 updateUserProfile(profile)
                     .then(() => {
                         console.log('update profile successfully');
+                      
+                    // user stored db
+                    axios.post(`${import.meta.env.VITE_API_URL}/users`, {
+                        name: data.name,
+                        email: data.email,
+                        image: data.photo,
                     })
+                        .then(res => {
+                            // console.log(res.data);
+                            if (res.data.insertedId) {
+                                Swal.fire({
+                                    position: "top-end",
+                                    icon: "success",
+                                    title: "User Created successfully",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                });
+                                navigate('/');
+                                reset();
+                            }
+                        })
+                    })
+
+
 
             })
             .catch(error => {

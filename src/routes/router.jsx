@@ -21,6 +21,8 @@ import Feedback from "../Layout/DashBoard/Feedback/Feedback";
 import Error from "../Pages/Error/Error";
 import PrivateRoute from "./PrivateRoute";
 import Analytics from "../Layout/DashBoard/Analytics/Analytics";
+import ParticipantProfile from "../Layout/DashBoard/ParticipantProfile/ParticipantProfile";
+import UpdateParticipantProfile from "../Layout/DashBoard/UpdateParticipantProfile/UpdateParticipantProfile";
 
 
 
@@ -103,6 +105,14 @@ const router = createBrowserRouter([
            {
             path: '/dashboard/analytics',
             element: <Analytics></Analytics>
+           },
+           {
+            path: '/dashboard/participant-profile',
+            element: <ParticipantProfile></ParticipantProfile>
+           },
+           {
+            path: '/dashboard/participant/:id',
+            element: <UpdateParticipantProfile></UpdateParticipantProfile>
            }
 
         ]
