@@ -27,7 +27,6 @@ const Feedback = () => {
 
         axios.post(`${import.meta.env.VITE_API_URL}/feedbacks`, feedbackData)
             .then(res => {
-                console.log(res.data);
                 if (res.data.insertedId) {
                     Swal.fire({
                         position: "top-end",

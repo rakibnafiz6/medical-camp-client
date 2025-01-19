@@ -13,7 +13,7 @@ const ShowFeedback = () => {
         }
     })
 
-    console.log(feedbacks);
+  
     return (
         <div>
             <h2 className="text-2xl font-bold text-center">Feedback and Ratings</h2>

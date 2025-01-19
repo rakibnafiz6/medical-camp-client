@@ -18,6 +18,9 @@ import Payment from "../Layout/DashBoard/Payment/Payment";
 import PaymentHistory from "../Layout/DashBoard/PaymentHistory/PaymentHistory";
 import ManageRegisterCamp from "../Layout/DashBoard/ManageRegisterCamp/ManageRegisterCamp";
 import Feedback from "../Layout/DashBoard/Feedback/Feedback";
+import Error from "../Pages/Error/Error";
+import PrivateRoute from "./PrivateRoute";
+import Analytics from "../Layout/DashBoard/Analytics/Analytics";
 
 
 
@@ -26,6 +29,7 @@ const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/',
@@ -51,7 +55,10 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashBoard></DashBoard>,
+        element: <PrivateRoute>
+            <DashBoard></DashBoard>
+        </PrivateRoute>,
+        errorElement: <Error></Error>,
         children: [
            {
             path: '/dashboard/add-camp',
@@ -92,6 +99,10 @@ const router = createBrowserRouter([
            {
             path: '/dashboard/feedback',
             element: <Feedback></Feedback>
+           },
+           {
+            path: '/dashboard/analytics',
+            element: <Analytics></Analytics>
            }
 
         ]

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
@@ -6,6 +6,10 @@ import Swal from "sweetalert2";
 
 const Login = () => {
     const { signInUser } = useAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state || '/';
+
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
@@ -20,6 +24,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                navigate(from);
             })
             .catch(error => {
                 console.log(error.message);
