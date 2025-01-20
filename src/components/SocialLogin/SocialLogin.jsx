@@ -30,7 +30,7 @@ const SocialLogin = () => {
 
     return (
         <div>
-             <button onClick={handleGoogle} className="btn btn-primary w-80 ml-7">
+             <button onClick={handleGoogle} className="btn btn-primary lg:w-80 ml-7">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-6 w-6"

@@ -23,7 +23,7 @@ const HighsParticipant = () => {
         <div>
             <h2 className="text-2xl font-bold text-center">Highs Participant Card</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {data?.map(camp => <div key={camp._id} className="card bg-base-100 w-96 shadow-xl">
+                {data?.map(camp => <div key={camp._id} className="card bg-base-100 shadow-xl">
                     <figure className="px-10 pt-10">
                         <img
                             src={camp.image}
@@ -44,7 +44,7 @@ const HighsParticipant = () => {
                 </div>)}
             </div>
             <div className="flex justify-center">
-            <Link to='/available'><button className="btn btn-primary mt-5 w-[400px]">See All Camps</button></Link>
+            <Link to='/available'><button className="btn btn-primary mt-5 md:w-[400px]">See All Camps</button></Link>
             </div>
         </div>
     );

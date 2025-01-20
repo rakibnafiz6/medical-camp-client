@@ -72,7 +72,7 @@ const AddCamp = () => {
                     )}
                 </div>
 
-                <div className='flex gap-2'>
+                <div className='flex gap-2 flex-col md:flex-row'>
 
                     {/* Camp Fees */}
                     <div className="mb-4">
@@ -105,7 +105,7 @@ const AddCamp = () => {
                     </div>
                 </div>
 
-                <div className='flex gap-2'>
+                <div className='flex gap-2 flex-col md:flex-row'>
                     {/* Location */}
                     <div className="mb-4">
                         <label className="block text-gray-700">Location</label>

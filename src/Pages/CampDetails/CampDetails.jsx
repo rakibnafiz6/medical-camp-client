@@ -23,15 +23,15 @@ const CampDetails = () => {
    
     return (
         <div>
-            <h2>Camp Details</h2>
+            <h2 className='font-bold text-center text-2xl mb-4'>Camp Details</h2>
             <div className="hero bg-base-200 min-h-screen">
                 <div className="hero-content flex-col lg:flex-row w-full">
-                    <div className='w-2/3'>
+                    <div className='lg:w-2/3 md:w-full'>
                         <img
                             src={camps.image}
                             className="w-full rounded-lg shadow-2xl" />
                     </div>
-                    <div className='w-1/3'>
+                    <div className='lg:w-1/3'>
                         <h1 className="text-5xl font-bold">{camps.campName}</h1>
                         <p className='flex items-center gap-1 mb-2 mt-2'><FaLocationArrow />{camps.location}</p>
                         <p className='flex items-center gap-1 mb-2'><BsCalendarDateFill />{camps.dateTime}</p>

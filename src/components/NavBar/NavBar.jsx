@@ -3,8 +3,8 @@ import useAuth from "../../hooks/useAuth";
 
 const NavBar = () => {
     const links = <>
-        <NavLink to='/' className='mr-2'><li>Home</li></NavLink>
-        <NavLink to='/available'><li>Available Camps</li></NavLink>
+        <NavLink to='/' className='mr-2 font-semibold text-base'><li>Home</li></NavLink>
+        <NavLink to='/available' className='font-semibold text-base'><li>Available Camps</li></NavLink>
     </>
     const { signOutUser, user } = useAuth();
 
@@ -19,7 +19,7 @@ const NavBar = () => {
     }
 
     return (
-        <div className="navbar bg-base-100 px-10">
+        <div className="navbar bg-base-100 md:px-10">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

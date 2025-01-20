@@ -10,8 +10,8 @@ const DashBoard = () => {
 
 
     return (
-        <div className="flex gap-4 w-11/12 mx-auto">
-        <div className="bg-red-600 flex flex-col p-8 w-60 min-h-screen">
+        <div className="flex flex-col lg:flex-row gap-4 w-11/12 mx-auto">
+        <div className="bg-red-600 flex flex-col md:flex-row lg:flex-col md:gap-4 p-8 lg:w-60 lg:min-h-screen">
              
             {user?.email === "nafizrakib55@gmail.com"?<>
             {/* organizer */}

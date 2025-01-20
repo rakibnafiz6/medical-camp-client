@@ -90,7 +90,7 @@ const RegisterCamps = () => {
                                             )}
                                         </td>
                                         <td>{camp.confirmationStatus}</td>
-                                        <td className="flex">
+                                        <td className="flex flex-col lg:flex-row">
                                             {camp.paymentStatus === 'unpaid' ? (
                                                 <button onClick={() => handleCancel(camp._id)} className="btn">
                                                     Cancel
