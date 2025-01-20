@@ -5,9 +5,11 @@ import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const UpdateCamps = () => {
     const { id } = useParams();
+    const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
 
     const { data: camp, isLoading } = useQuery({
@@ -18,7 +20,7 @@ const UpdateCamps = () => {
         }
     })
 
-    console.log(camp);
+    // console.log(camp);
 
     const {
         register, formState: { errors }, reset,
@@ -55,7 +57,7 @@ const UpdateCamps = () => {
             campName, image, fees, dateTime, location, participantCount, professionalName, description
         }
 
-        axios.put(`${import.meta.env.VITE_API_URL}/camps-update/${id}`, updatedCamp)
+        axiosSecure.put(`/camps-update/${id}`, updatedCamp)
             .then(res => {
                 // console.log(res.data);
                 if (res.data.modifiedCount) {

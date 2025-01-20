@@ -2,8 +2,10 @@ import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { format } from 'date-fns';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const AddCamp = () => {
+    const navigate = useNavigate();
     const axiosSecure = useAxiosSecure();
     const {
         register,
@@ -34,7 +36,7 @@ const AddCamp = () => {
                         timer: 1500
                       });
                       reset();
-                    //   navigate('/myVolunteer')
+                      navigate('/dashboard/manage-camps');
                 }    
             })
     };

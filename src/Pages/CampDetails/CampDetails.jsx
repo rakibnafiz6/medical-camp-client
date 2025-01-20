@@ -39,8 +39,7 @@ const CampDetails = () => {
                         <p className='flex items-center gap-1 mb-2'><GiMoneyStack />{camps.fees}</p>
                         <p className='flex items-center gap-1'><SiNamebase />{camps.professionalName}</p>
                         <p className="py-6">
-                            {/* {camps.description} */}
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptas alias modi quae cumque. Amet eligendi error, perferendis, explicabo cum aliquid veniam, illo et expedita deserunt nobis fuga incidunt tempore delectus doloremque voluptate numquam nulla laborum! Molestiae enim voluptatem placeat eos repudiandae! Architecto consectetur quis odit? Eos non voluptate rerum earum?
+                            {camps.description}
                         </p>
                         <JoinCamp camps={camps} id={id}></JoinCamp>
                     </div>

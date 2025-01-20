@@ -9,13 +9,13 @@ import Swal from "sweetalert2";
 
 const Feedback = () => {
     const [rating, setRating] = useState(0);
-    console.log(rating);
+    // console.log(rating);
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const campName = queryParams.get("campName");
     const participantName = queryParams.get("name");
 
-    console.log(campName, participantName);
+    // console.log(campName, participantName);
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;

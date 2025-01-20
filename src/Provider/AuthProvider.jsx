@@ -2,7 +2,6 @@ import { createContext, useEffect, useState } from "react";
 import auth from "../firebase.init";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import axios from "axios";
-import Swal from "sweetalert2";
 
 
 export const AuthContext = createContext(null);
@@ -40,7 +39,7 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log('state change', currentUser);
+            // console.log('state change', currentUser);
             setUser(currentUser);
             if(currentUser){
                 const userInfo = {email: currentUser.email};

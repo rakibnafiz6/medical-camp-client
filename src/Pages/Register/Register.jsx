@@ -14,7 +14,7 @@ const Register = () => {
        
         createUser(data.email, data.password)
             .then(result => {
-                console.log(result);
+                // console.log(result);
                
                 const profile = {
                     displayName: data.name,
@@ -22,7 +22,7 @@ const Register = () => {
                 }
                 updateUserProfile(profile)
                     .then(() => {
-                        console.log('update profile successfully');
+                        // console.log('update profile successfully');
                       
                     // user stored db
                     axios.post(`${import.meta.env.VITE_API_URL}/users`, {

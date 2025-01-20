@@ -14,7 +14,7 @@ const AvailableCamp = () => {
     const [sort, setSort] = useState('');
     const [layout, setLayout] = useState('');
 
-    console.log(sort);
+    // console.log(sort);
     const { data: camps = [], refetch } = useQuery({
         queryKey: ['camps'],
         queryFn: async () => {

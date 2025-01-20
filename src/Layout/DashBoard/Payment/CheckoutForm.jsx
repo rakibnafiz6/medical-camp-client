@@ -8,13 +8,13 @@ import { useNavigate } from "react-router-dom";
 const CheckoutForm = ({ fees, id }) => {
     const { user } = useAuth();
     const navigate = useNavigate();
-    console.log("Fees in CheckoutForm:", fees, id);
+    // console.log("Fees in CheckoutForm:", fees, id);
     const stripe = useStripe();
     const elements = useElements();
     const [error, setError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const [transactionId, setTransactionId] = useState('');
-    console.log(clientSecret);
+    // console.log(clientSecret);
 
     useEffect(() => {
         if (fees) {
@@ -62,9 +62,9 @@ const CheckoutForm = ({ fees, id }) => {
 
         if (confirmError) {
             // setError(confirmError.message);
-            console.log('confirm error');
+            // console.log('confirm error');
         } else {
-            console.log("Payment Success:", paymentIntent);
+            // console.log("Payment Success:", paymentIntent);
             if (paymentIntent.status === 'succeeded') {
                 console.log('transactionId', paymentIntent.id);
                 setTransactionId(paymentIntent.id);

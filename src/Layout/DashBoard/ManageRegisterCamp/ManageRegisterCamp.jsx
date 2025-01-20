@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { useState } from "react";
 import Swal from "sweetalert2";
 
 const ManageRegisterCamp = () => {
@@ -13,7 +14,7 @@ const ManageRegisterCamp = () => {
     })
     
     const handleConfirmation = (id)=>{
-        console.log(id);
+        // console.log(id);
         axios.patch(`${import.meta.env.VITE_API_URL}/confirmation-status/${id}`)
         .then(res=>{
             // console.log(res.data);
@@ -56,10 +57,20 @@ const ManageRegisterCamp = () => {
           });
     }
 
+    // pagination
+    const [currentPage, setCurrentPage] = useState(1);
+    const rowsPerPage = 10;
+
+    // Calculate total pages
+    const totalPages = Math.ceil(registerCamps.length / rowsPerPage);
+    // Get current page data
+    const currentData = registerCamps.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+
+
     return (
-        <div>
-            <h2>Manage Register Camp</h2>
-            <div className="overflow-x-auto">
+        <div className="">
+            <h2 className="font-bold text-2xl text-center mb-4">Manage Register Camp</h2>
+            <div className="overflow-x-auto min-h-screen">
                 <table className="table">
                     {/* head */}
                     <thead>
@@ -74,7 +85,7 @@ const ManageRegisterCamp = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {registerCamps.map((camp, idx) =><tr key={idx} className="hover">
+                        {currentData.map((camp, idx) =><tr key={idx} className="hover">
                             <th>{idx + 1}</th>
                             <td>{camp.participantName}</td>
                             <td>{camp.campName}</td>
@@ -92,6 +103,24 @@ const ManageRegisterCamp = () => {
                        
                     </tbody>
                 </table>
+            </div>
+             {/* Pagination Controls */}
+             <div className="flex justify-center mt-4">
+                <button
+                    className="px-4 py-2 mx-1 bg-gray-300 rounded"
+                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                >
+                    Previous
+                </button>
+                <span className="px-4 py-2">{`Page ${currentPage} of ${totalPages}`}</span>
+                <button
+                    className="px-4 py-2 mx-1 bg-gray-300 rounded"
+                    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                >
+                    Next
+                </button>
             </div>
         </div>
     );

@@ -44,13 +44,27 @@ const Banner = () => {
             <div className="navigation-wrapper">
                 <div ref={sliderRef} className="keen-slider">
                     <div className="keen-slider__slide number-slide1">
-                        1
+                      <div className="flex justify-center items-center flex-col">
+                      <img src="https://i.ibb.co.com/rcJdfc2/download.jpg"
+                       className="h-40 w-72"
+                       alt="" />
+                       <h2>Camp A - A Life Saved</h2>
+                       <p>Over 100 participants joined to save lives through this impactful camp.</p>
+                      </div>
                     </div>
                     <div className="keen-slider__slide number-slide2">
-                        2
+                       <div className="flex justify-center items-center flex-col">
+                       <img src="https://i.ibb.co.com/ypc7n09/istockphoto-1249432480-612x612.jpg" className="w-72 h-40" alt="" />
+                        <h2>Camp B - Medical Aid Delivered</h2>
+                        <p>Doctors and volunteers worked tirelessly to provide free healthcare.</p>
+                       </div>
                     </div>
                     <div className="keen-slider__slide number-slide3">
-                        3
+                       <div className="flex justify-center items-center flex-col">
+                       <img src="https://i.ibb.co.com/r6FMkwQ/istockphoto-1757748009-612x612.jpg" className="h-40 w-72" alt="" />
+                        <h2>Camp C - Health Awareness</h2>
+                        <p>Spreading awareness about common diseases and preventive measures.</p>
+                       </div>
                     </div>
                 </div>
                 {loaded && instanceRef.current && (

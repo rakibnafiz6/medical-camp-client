@@ -3,6 +3,7 @@ import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 
 const RegisterCamps = () => {
@@ -37,10 +38,20 @@ const RegisterCamps = () => {
         });
     };
 
+    // pagination
+    const [currentPage, setCurrentPage] = useState(1);
+    const rowsPerPage = 10;
+
+    // Calculate total pages
+    const totalPages = Math.ceil(data.length / rowsPerPage);
+    // Get current page data
+    const currentData = data.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+
     return (
         <div>
             <h2 className="font-bold text-2xl text-center mb-4">Register Camps</h2>
             {data?.length ? (
+                <>
                 <div className="overflow-x-auto">
                     <table className="table">
                         <thead>
@@ -55,7 +66,7 @@ const RegisterCamps = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {data.map((camp, idx) => (
+                            {currentData.map((camp, idx) => (
                                 <tr key={idx} className="hover">
                                     <th>{idx + 1}</th>
                                     <td>{camp.campName}</td>
@@ -90,6 +101,25 @@ const RegisterCamps = () => {
                         </tbody>
                     </table>
                 </div>
+                {/* Pagination Controls */}
+            <div className="flex justify-center mt-4">
+                <button
+                    className="px-4 py-2 mx-1 bg-gray-300 rounded"
+                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                    disabled={currentPage === 1}
+                >
+                    Previous
+                </button>
+                <span className="px-4 py-2">{`Page ${currentPage} of ${totalPages}`}</span>
+                <button
+                    className="px-4 py-2 mx-1 bg-gray-300 rounded"
+                    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                    disabled={currentPage === totalPages}
+                >
+                    Next
+                </button>
+            </div>
+                </>
             ) : (
                 <p className="font-bold text-center text-lg">
                     You are not registered for any camp. Please register and access your data.

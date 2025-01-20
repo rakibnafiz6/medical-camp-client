@@ -13,10 +13,10 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const onSubmit = (data) => {
-        console.log("Form Data:", data);
+        // console.log("Form Data:", data);
         signInUser(data.email, data.password)
             .then(result => {
-                console.log(result);
+                // console.log(result);
                 Swal.fire({
                     position: "top-end",
                     icon: "success",
@@ -28,7 +28,7 @@ const Login = () => {
                 navigate(from);
             })
             .catch(error => {
-                console.log(error.message);
+                // console.log(error.message);
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",

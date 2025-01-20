@@ -14,7 +14,7 @@ const ParticipantProfile = () => {
             return res.data;
         }
     })
- console.log(data);
+//  console.log(data);
 
 
     return (

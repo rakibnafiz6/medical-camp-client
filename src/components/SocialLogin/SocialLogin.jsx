@@ -19,12 +19,12 @@ const SocialLogin = () => {
 
             axios.post(`${import.meta.env.VITE_API_URL}/users`, userInfo)
                 .then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                   navigate('/');
                 })
         })
         .catch(error=>{
-            console.log(error.message);
+            // console.log(error.message);
         })
     }
 
