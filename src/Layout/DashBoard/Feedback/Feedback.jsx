@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Rating } from '@smastrom/react-rating'
 import '@smastrom/react-rating/style.css'
 import { useState } from "react";
@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 
 const Feedback = () => {
     const [rating, setRating] = useState(0);
-    // console.log(rating);
+    const navigate = useNavigate();
     const location = useLocation();
     const queryParams = new URLSearchParams(location.search);
     const campName = queryParams.get("campName");
@@ -36,6 +36,7 @@ const Feedback = () => {
                         timer: 2000
                     });
                     form.reset();
+                    navigate('/');
                 }
             })
     }

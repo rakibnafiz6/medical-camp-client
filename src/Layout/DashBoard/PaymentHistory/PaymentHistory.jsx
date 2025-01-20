@@ -2,33 +2,42 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
 import { useState } from "react";
+import AllTableSearch from "../../../components/AllTableSearch/AllTableSearch";
 
 const PaymentHistory = () => {
     const { user } = useAuth();
+    const [search, setSearch] = useState('');
 
-    const { data: payments } = useQuery({
+    const { data: payments, refetch } = useQuery({
         queryKey: ['payment-history'],
         queryFn: async () => {
-            const res = await axios.get(`${import.meta.env.VITE_API_URL}/payment-history/${user?.email}`)
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/payment-history/${user?.email}?search=${search}`)
             return res.data;
         }
     })
     
+    const handleSearch = (query) => {
+        setSearch(query);
+        refetch();
+    };
+
+
 
     // pagination
     const [currentPage, setCurrentPage] = useState(1);
     const rowsPerPage = 10;
 
     // Calculate total pages
-    const totalPages = Math.ceil(payments.length / rowsPerPage);
+    const totalPages = Math.ceil(payments?.length / rowsPerPage);
     // Get current page data
-    const currentData = payments.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+    const currentData = payments?.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
 
 
     return (
         <div>
             <h2 className="text-2xl font-bold text-center mb-4">Payment History</h2>
-            {payments?.length ?<> <div className="overflow-x-auto">
+            <AllTableSearch onSearch={handleSearch}></AllTableSearch>
+            {payments?.length ?<> <div className="overflow-x-auto min-h-screen">
                 <table className="table">
                     {/* head */}
                     <thead>

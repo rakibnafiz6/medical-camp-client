@@ -1,6 +1,5 @@
 import React from 'react';
 import useAuth from '../../../hooks/useAuth';
-import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
@@ -26,7 +25,6 @@ const ParticipantProfile = () => {
              alt="" />
             <h2 className='text-lg font-bold'>Name: {data?.name}</h2>
             <p className='font-medium text-gray-500'>Email: {data?.email}</p>
-            <Link to={`/dashboard/participant/${data?._id}`}><button className='btn btn-primary mt-2'>Update</button></Link>
            </div>
       </div>
     );

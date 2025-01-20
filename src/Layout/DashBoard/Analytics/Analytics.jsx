@@ -54,7 +54,6 @@ const Analytics = () => {
         </Bar>
       </BarChart>
     </div>
-    // <p>hello</p>
     );
 };
 

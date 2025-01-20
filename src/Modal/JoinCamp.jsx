@@ -1,9 +1,11 @@
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 const JoinCamp = ({ camps, id }) => {
     const { user } = useAuth();
+    const navigate = useNavigate();
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -39,7 +41,7 @@ const JoinCamp = ({ camps, id }) => {
                     });
                     form.reset();
                     document.getElementById('my_modal_5').close();
-                    //   navigate('/myVolunteer')
+                      navigate('/dashboard/register');
                 }
             })
     }

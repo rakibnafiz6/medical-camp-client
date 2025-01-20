@@ -66,7 +66,7 @@ const CheckoutForm = ({ fees, id }) => {
         } else {
             // console.log("Payment Success:", paymentIntent);
             if (paymentIntent.status === 'succeeded') {
-                console.log('transactionId', paymentIntent.id);
+                // console.log('transactionId', paymentIntent.id);
                 setTransactionId(paymentIntent.id);
                 // Update payment status in database
                 axios
@@ -81,7 +81,7 @@ const CheckoutForm = ({ fees, id }) => {
                                 showConfirmButton: false,
                                 timer: 2000
                             });
-                            navigate('/dashboard/register');
+                            navigate('/dashboard/payment-history');
                         }
                     });
             }

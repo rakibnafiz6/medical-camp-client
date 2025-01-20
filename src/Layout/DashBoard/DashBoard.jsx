@@ -5,17 +5,8 @@ import useAuth from "../../hooks/useAuth";
 
 const DashBoard = () => {
     const {user} = useAuth();
-    // console.log(user);
-    // const {data: users = [], isPending} = useQuery({
-    //     queryKey: ['users'],
-    //     queryFn: async()=>{
-    //         const res = await axios.get(`${import.meta.env.VITE_API_URL}/users`)
-    //         return res.data;
-    //     }
-    // })
     
     
-
 
 
     return (

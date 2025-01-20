@@ -1,6 +1,6 @@
 <h2>Medical Camp Management System</h2>
 <h2>Live Site URL</h2>
-<li></li>
+<li>https://medical-camp-management-f082d.web.app/</li>
 <h2>Organizer Credentials:</h2>
 <p>Username: NafizRakib</p>
 <p>Password: 123456Aa</p>

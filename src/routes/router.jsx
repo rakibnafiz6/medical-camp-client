@@ -10,7 +10,6 @@ import AddCamp from "../Layout/DashBoard/AddCamp/AddCamp";
 import AvailableCamp from "../Pages/AvailableCamp/AvailableCamp";
 import CampDetails from "../Pages/CampDetails/CampDetails";
 import OrganizerProfile from "../Layout/DashBoard/OrganizerProfile/OrganizerProfile";
-import UpdateOrganizerProfile from "../Layout/DashBoard/UpdateOrganizerProfile/UpdateOrganizerProfile";
 import ManageCamps from "../Layout/DashBoard/ManageCamps/ManageCamps";
 import UpdateCamps from "../Layout/DashBoard/UpdateCamps/UpdateCamps";
 import RegisterCamps from "../Layout/DashBoard/RegisterCamps/RegisterCamps";
@@ -22,7 +21,6 @@ import Error from "../Pages/Error/Error";
 import PrivateRoute from "./PrivateRoute";
 import Analytics from "../Layout/DashBoard/Analytics/Analytics";
 import ParticipantProfile from "../Layout/DashBoard/ParticipantProfile/ParticipantProfile";
-import UpdateParticipantProfile from "../Layout/DashBoard/UpdateParticipantProfile/UpdateParticipantProfile";
 
 
 
@@ -71,10 +69,6 @@ const router = createBrowserRouter([
             element: <OrganizerProfile></OrganizerProfile>
            },
            {
-            path: '/dashboard/organizer-update',
-            element: <UpdateOrganizerProfile></UpdateOrganizerProfile>
-           },
-           {
             path: '/dashboard/manage-camps',
             element: <ManageCamps></ManageCamps>
            },
@@ -110,10 +104,6 @@ const router = createBrowserRouter([
             path: '/dashboard/participant-profile',
             element: <ParticipantProfile></ParticipantProfile>
            },
-           {
-            path: '/dashboard/participant/:id',
-            element: <UpdateParticipantProfile></UpdateParticipantProfile>
-           }
 
         ]
     }

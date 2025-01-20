@@ -4,14 +4,16 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useState } from "react";
+import AllTableSearch from "../../../components/AllTableSearch/AllTableSearch";
 
 const ManageCamps = () => {
     const axiosSecure = useAxiosSecure();
+    const [search, setSearch] = useState('');
 
     const { data: camps = [], refetch } = useQuery({
         queryKey: ['manage-camps'],
         queryFn: async () => {
-            const res = await axiosSecure.get(`/manage-camps`)
+            const res = await axiosSecure.get(`/manage-camps?search=${search}`)
             return res.data;
         }
     })
@@ -44,6 +46,13 @@ const ManageCamps = () => {
         });
     }
 
+    const handleSearch = (query) => {
+        setSearch(query);
+        refetch();
+    };
+
+
+
     // pagination
     const [currentPage, setCurrentPage] = useState(1);
     const rowsPerPage = 10;
@@ -58,7 +67,8 @@ const ManageCamps = () => {
     return (
         <div>
             <h2 className="text-2xl font-bold text-center mb-4">Manage Camps</h2>
-            <div className="overflow-x-auto">
+            <AllTableSearch onSearch={handleSearch}></AllTableSearch>
+            <div className="overflow-x-auto min-h-screen">
                 <table className="table">
                     {/* head */}
                     <thead>

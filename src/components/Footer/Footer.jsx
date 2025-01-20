@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -18,36 +19,36 @@ const Footer = () => {
                         <h3 className="text-xl font-semibold mb-4">Quick Links</h3>
                         <ul className="space-y-2">
                             <li>
-                                <a
-                                    href="/home"
+                                <Link
+                                    to='/'
                                     className="text-gray-400 hover:text-white transition duration-200"
                                 >
                                     Home
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                    href="/available-camps"
+                                <Link
+                                   to='/available'
                                     className="text-gray-400 hover:text-white transition duration-200"
                                 >
                                     Available Camps
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                    href="/join-us"
+                                <Link
+                                    to='/login'
                                     className="text-gray-400 hover:text-white transition duration-200"
                                 >
                                     Join Us
-                                </a>
+                                </Link>
                             </li>
                             <li>
-                                <a
-                                    href="/dashboard"
+                                <Link
+                                    to='/dashboard'
                                     className="text-gray-400 hover:text-white transition duration-200"
                                 >
                                     Dashboard
-                                </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

@@ -2,13 +2,15 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import AllTableSearch from "../../../components/AllTableSearch/AllTableSearch";
 
 const ManageRegisterCamp = () => {
+    const [search, setSearch] = useState('');
 
     const { data: registerCamps = [], refetch } = useQuery({
         queryKey: ['manage-register'],
         queryFn: async () => {
-            const res = await axios.get(`${import.meta.env.VITE_API_URL}/manage-register`)
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/manage-register?search=${search}`)
             return res.data;
         }
     })
@@ -18,7 +20,7 @@ const ManageRegisterCamp = () => {
         axios.patch(`${import.meta.env.VITE_API_URL}/confirmation-status/${id}`)
         .then(res=>{
             // console.log(res.data);
-            if (res.data.modifiedCount) {
+            if (res?.data?.result?.modifiedCount) {
                 refetch();
                 Swal.fire({
                     position: "top-end",
@@ -28,7 +30,7 @@ const ManageRegisterCamp = () => {
                     timer: 2000
                 });
      } })
-    }
+ }
 
     const handleDelete = (id)=>{
         Swal.fire({
@@ -44,7 +46,7 @@ const ManageRegisterCamp = () => {
             axios.delete(`${import.meta.env.VITE_API_URL}/delete-register/${id}`)
             .then(res=>{
                 // console.log(res.data);
-               if(res.data.deletedCount){
+               if(res?.data?.result?.deletedCount){
                 refetch();
                 Swal.fire({
                     title: "Canceled!",
@@ -57,19 +59,26 @@ const ManageRegisterCamp = () => {
           });
     }
 
+    const handleSearch = (query) => {
+        setSearch(query);
+        refetch();
+    };
+
+
     // pagination
     const [currentPage, setCurrentPage] = useState(1);
     const rowsPerPage = 10;
 
     // Calculate total pages
-    const totalPages = Math.ceil(registerCamps.length / rowsPerPage);
+    const totalPages = Math.ceil(registerCamps?.length / rowsPerPage);
     // Get current page data
-    const currentData = registerCamps.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+    const currentData = registerCamps?.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
 
 
     return (
         <div className="">
             <h2 className="font-bold text-2xl text-center mb-4">Manage Register Camp</h2>
+            <AllTableSearch onSearch={handleSearch}></AllTableSearch>
             <div className="overflow-x-auto min-h-screen">
                 <table className="table">
                     {/* head */}
